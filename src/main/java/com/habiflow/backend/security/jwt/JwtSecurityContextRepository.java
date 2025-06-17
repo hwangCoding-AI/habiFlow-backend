@@ -1,5 +1,6 @@
 package com.habiflow.backend.security.jwt;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -9,13 +10,10 @@ import org.springframework.security.web.server.context.ServerSecurityContextRepo
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+@RequiredArgsConstructor
 public class JwtSecurityContextRepository implements ServerSecurityContextRepository {
 
     private final JwtAuthenticationManager authenticationManager;
-
-    public JwtSecurityContextRepository(JwtAuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
 
     @Override
     public Mono<Void> save(ServerWebExchange exchange, SecurityContext context) {

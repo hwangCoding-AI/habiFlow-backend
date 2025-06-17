@@ -1,5 +1,6 @@
 package com.habiflow.backend.security.jwt;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -8,13 +9,10 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 public class JwtAuthenticationManager implements ReactiveAuthenticationManager {
 
     private final JwtUtils jwtUtils;
-
-    public JwtAuthenticationManager(JwtUtils jwtUtils) {
-        this.jwtUtils = jwtUtils;
-    }
 
     @Override
     public Mono<Authentication> authenticate(Authentication authentication) {
